@@ -1,3 +1,4 @@
+require 'erb'
 require 'rubygems'
 require 'pry'
 require 'sinatra'
