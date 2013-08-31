@@ -28,4 +28,5 @@ DEPENDENCIES
   dir
   fileutils
   pry
+  rack
   sinatra
