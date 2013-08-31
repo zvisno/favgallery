@@ -1,1 +1,3 @@
-run uploader.rb
+require './uploader'
+
+run Sinatra::Application
