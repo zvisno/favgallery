@@ -20,9 +20,10 @@
     <div class="container"> 
     <!-- Form to upload an image or another file -->
           <% if alarm == 1 %>
-	    <p>Boooo</p>
+	    <p>You need to specify a file</p>
           <% end %>
           <%= list_images "./public/images" %>
+	  
       </div>
       <div class="file-size" id="detail"> 
       </div>

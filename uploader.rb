@@ -2,8 +2,13 @@ require 'erb'
 require 'rubygems'
 require 'pry'
 require 'sinatra'
+require 'sinatra/reloader' if development?
 require 'fileutils'
 require 'dir'
+
+configure :development do
+  register Sinatra::Reloader
+end
 
 PATH = "./public/images"
         
@@ -21,11 +26,14 @@ end
 def list_images folder
   list = list_of_images folder
   return list.map { |item|  "<img src = 'images/#{item}' alt = '#{item}' height='100'/>" }.join
-end
+ end
 
 get '/details' do
   image = params[:url]
-  File.size("./public/#{image}").to_s
+  file_size = File.size("./public/#{image}")
+  size = (file_size/(1024.0)).round(3).to_s
+  erb = ERB.new(File.read("./view/image_details.html.erb"))
+  erb.result(binding)
 end
 
 get '/' do

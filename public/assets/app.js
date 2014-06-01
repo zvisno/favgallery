@@ -3,6 +3,6 @@ $(document).ready(function() {
     var url = $(this).attr("src")
     $.get('/details', {url: url}, function( data ) {
       $("div#detail" ).html( data );
-});
- });
+    });
+  });
 });

@@ -14,5 +14,9 @@ h1 {
 	float: right; 
 }
 .file-size {
+	color: black;
+}
+
+.unit {
 	color: orange;
 }
