@@ -29,6 +29,7 @@ def list_images folder
  end
 
 get '/details' do
+  binding.pry
   image = params[:url]
   file_size = File.size("./public/#{image}")
   size = (file_size/(1024.0)).round(3).to_s

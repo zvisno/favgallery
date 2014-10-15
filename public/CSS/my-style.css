@@ -1,22 +1,33 @@
-h1 {
-	color: orange;
-	text-align: center;
+body {
+    background-color: #F3F4E4;
 }
 
 #upload-form {
 	margin: 0 auto;
 }
 
-.container {
-	width: 1000px;
+#upload {
+    color: #F3C93A;
+    position: absolute;
+    right: 20px;
+    width: 300px;
+}
+
+.image-container {
+    position: relative;
+	width: 800px;
 }
 .img {
 	float: right; 
 }
 .file-size {
-	color: black;
+	color: #39C1D8;
 }
 
 .unit {
-	color: orange;
+	color: #39C1D8;
+}
+
+.title {
+    color: #39C1D8;
 }
