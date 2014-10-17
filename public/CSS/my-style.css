@@ -4,22 +4,29 @@ body {
 
 #upload-form {
 	margin: 0 auto;
+  text-align: left;
 }
 
 #upload {
-    color: #F3C93A;
+    color: #E8E555;
     position: absolute;
-    right: 20px;
-    width: 300px;
+    border: 1px solid;
+    width: 330px;
+    left: 600px;
+    display: inline-block;
 }
 
-.image-container {
+.images-container {
     position: relative;
-	width: 800px;
+	width: 500px;
+    display: inline;
 }
-.img {
-	float: right; 
+
+.image-subcontainer {
+    float: left;
+    border: 5px solid #E8E555;
 }
+
 .file-size {
 	color: #39C1D8;
 }

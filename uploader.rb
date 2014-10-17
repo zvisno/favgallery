@@ -25,11 +25,10 @@ end
 
 def list_images folder
   list = list_of_images folder
-  return list.map { |item|  "<img src = 'images/#{item}' alt = '#{item}' height='100'/>" }.join
+  return list.map { |item|  "<div class='image-subcontainer'> <img onclick='removeElement()' src = 'images/#{item}' alt = '#{item}' height='100'/> </div>" }.join
  end
 
 get '/details' do
-  binding.pry
   image = params[:url]
   file_size = File.size("./public/#{image}")
   size = (file_size/(1024.0)).round(3).to_s
