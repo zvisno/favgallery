@@ -1,13 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
 <link rel="stylesheet" href="CSS/my-style.css" type="text/css" media="screen, projection" />
+<link rel="shortcut icon" href="images/pixel.jpg">
 <head>
   <title> My favpics </title>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script src="assets/app.js"></script>
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
 <body>
   <!-- Form to upload an image or another file -->
   <div id="upload">
@@ -18,12 +21,15 @@
     </form>
   </div>
   <div class="images-container">
-    <!-- Form to upload an image or another file -->
     <% if alarm == 1 %>
     <p>You need to specify a file</p>
     <% end %>
-    <%= list_images "./public/images" %>
+    <div class='image-subcontainer'>
+      <%= list_images %>
+      <div class="file-size" id="detail"> </div>
+    </div>
   </div>
-  <div class="file-size" id="detail"> </div>
+
 </body>
+
 </html>

@@ -2,6 +2,10 @@ body {
     background-color: #F3F4E4;
 }
 
+img {
+    height: 100px;
+}
+
 #upload-form {
 	margin: 0 auto;
   text-align: left;
@@ -17,7 +21,7 @@ body {
 }
 
 .images-container {
-    position: relative;
+    position: absolute;
 	width: 500px;
     display: inline;
 }
@@ -28,7 +32,10 @@ body {
 }
 
 .file-size {
+    padding: 5px;
 	color: #39C1D8;
+    display: inline;
+    position: fixed;
 }
 
 .unit {
