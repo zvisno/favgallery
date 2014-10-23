@@ -1,22 +1,47 @@
-h1 {
-	color: orange;
-	text-align: center;
+body {
+    background-color: #F3F4E4;
+}
+
+img {
+    height: 100px;
 }
 
 #upload-form {
 	margin: 0 auto;
+  text-align: left;
 }
 
-.container {
-	width: 1000px;
+#upload {
+    color: #E8E555;
+    position: absolute;
+    border: 1px solid;
+    width: 330px;
+    left: 600px;
+    display: inline-block;
 }
-.img {
-	float: right; 
+
+.images-container {
+    position: absolute;
+	width: 500px;
+    display: inline;
 }
+
+.image-subcontainer {
+    float: left;
+    border: 5px solid #E8E555;
+}
+
 .file-size {
-	color: black;
+    padding: 5px;
+	color: #39C1D8;
+    display: inline;
+    position: fixed;
 }
 
 .unit {
-	color: orange;
+	color: #39C1D8;
+}
+
+.title {
+    color: #39C1D8;
 }
