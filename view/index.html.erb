@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" href="CSS/my-style.css" type="text/css" media="screen, projection" />
 <link rel="shortcut icon" href="images/pixel.jpg">
+<link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <head>
   <title> My favpics </title>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
@@ -20,11 +21,15 @@
       <input type="submit" value="Upload">
     </form>
   </div>
+
+  <!--<input id="delete_img" name="delete_img" value="Delete" type="button">-->
+
+
   <div class="images-container">
     <% if alarm == 1 %>
     <p>You need to specify a file</p>
     <% end %>
-    <div class='image-subcontainer'>
+    <div>
       <%= list_images %>
       <div class="file-size" id="detail"> </div>
     </div>

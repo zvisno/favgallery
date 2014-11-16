@@ -19,7 +19,7 @@ set :server, 'webrick'
 set :bucket, ENV['S3_BUCKET']
 set :s3_key, ENV['AWS_ACCESS_KEY_ID']
 set :s3_secret, ENV['AWS_SECRET_ACCESS_KEY']
-        
+
 def list_of_images(folder)
   check_dir_exists? PATH
   return Dir.entries(folder)
@@ -42,10 +42,9 @@ def list_images
   establish_s3_connection
   bucket = AWS::S3::Bucket.find(settings.bucket)
   bucket.objects.each do |o|
-    url = AWS::S3::S3Object.url_for( o.key, settings.bucket, :authenticated => false )
+    url = AWS::S3::S3Object.url_for(o.key, settings.bucket, :authenticated => false)
     a << url
   end
-
   AWS::S3::Base.disconnect!
   return a.map { |item|  "<div class='image-subcontainer'> <img src = '#{item}' alt = '#{item}'/> </div>" }.join
 end
@@ -64,6 +63,14 @@ get '/details' do
   erb.result(binding)
 end
 
+post '/delete' do
+  establish_s3_connection
+  filename = params[:filename]
+  AWS::S3::S3Object.delete filename, settings.bucket
+  redirect back
+  AWS::S3::Base.disconnect!
+end
+
 get '/' do
   alarm = 0
   erb = ERB.new(File.read("./view/index.html.erb"))
@@ -76,9 +83,10 @@ post '/' do
     filename = params[:file][:filename]
 
     establish_s3_connection
+
     AWS::S3::S3Object.store(filename, open(tmpfile), settings.bucket, :access => :public_read)
-    AWS::S3::Base.disconnect!
     redirect back
+    AWS::S3::Base.disconnect!
   else
     alarm = 1
     erb = ERB.new(File.read("./view/index.html.erb"))

@@ -1,34 +1,44 @@
 body {
-    background-color: #F3F4E4;
+    /*E9DBFF EEE1FF F6ECFF F6FBFF: almost white*/
+    background-color: #FFF3F2;
+    font: Lato Helvetica Neue;
 }
 
 img {
     height: 100px;
+    border: 1px solid;
 }
 
 #upload-form {
-	margin: 0 auto;
   text-align: left;
 }
 
 #upload {
-    color: #E8E555;
+    color: #320F37;
     position: absolute;
-    border: 1px solid;
+    border: 1px dashed #D7B2EB;
     width: 330px;
     left: 600px;
     display: inline-block;
+    margin: 10px;
 }
 
 .images-container {
     position: absolute;
 	width: 500px;
     display: inline;
+    border: 1px dashed #734579;
+    padding: 10px;
+    margin: 10px;
 }
 
 .image-subcontainer {
     float: left;
-    border: 5px solid #E8E555;
+    border: 1px;
+    padding: 1px;
+    margin: 5px;
+    border: 1px solid;
+    border-color: #D04D14;
 }
 
 .file-size {
@@ -43,5 +53,6 @@ img {
 }
 
 .title {
-    color: #39C1D8;
+    color: #734579;
+    margin-left: 10px;
 }
