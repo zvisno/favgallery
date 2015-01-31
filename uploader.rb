@@ -3,6 +3,7 @@ require 'rubygems'
 require 'pry'
 require 'sinatra'
 require 'sinatra/reloader' if development?
+require 'sinatra/cookies'
 require 'fileutils'
 require 'dir'
 require 'aws/s3'
@@ -57,7 +58,6 @@ get '/details' do
     response = http.request_head uri
     response['Content-Length']
   end
-
   size = (file_size.to_i/(1024.0)).round(3).to_s
   erb = ERB.new(File.read("./view/image_details.html.erb"))
   erb.result(binding)
@@ -90,6 +90,6 @@ post '/' do
   else
     alarm = 1
     erb = ERB.new(File.read("./view/index.html.erb"))
-    erb.result(binding)  
+    erb.result(binding)
   end
 end
