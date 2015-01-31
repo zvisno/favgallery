@@ -51,4 +51,5 @@ DEPENDENCIES
   pry
   rack
   sinatra
+  sinatra-contrib
   sinatra-reloader (~> 1.0)
