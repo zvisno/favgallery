@@ -1,0 +1,96 @@
+.my-h1 {
+    /*color: #52C8DB;*/
+    font-size: 18px;
+}
+.my-a:link {
+    text-decoration: none;
+    color: #0D0000;
+}
+
+.my-a:visited {
+    text-decoration: none;
+    color: #0D0000;
+}
+
+#container {
+    position: relative;
+    top: 50px;
+    height: 100%;
+    margin-bottom: 50px;
+}
+
+#menu-container {
+    top: 50px;
+    display: inline-block;
+    position: relative;
+    width: 15%;
+    padding-left: 50px;
+    vertical-align: top;
+}
+
+#blog-container {
+    display: inline-block;
+    position: relative;
+    width: 60%;
+    vertical-align: top;
+}
+
+#right-column {
+    top: 50px;
+    display: inline-block;
+    position: relative;
+    width: 23%;
+    padding-left: 50px;
+    padding-right: 50px;
+    vertical-align: top;
+}
+
+.custom-title {
+    color: #0D0000;
+}
+
+.lato-text-300 {
+    font-family: 'Lato' !important;
+    font-style: normal;
+    font-weight: 300;
+}
+
+.lato-text-900 {
+    font-family: 'Lato' !important;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.custom-p {
+    font-size: 18px;
+    color: #403C40;
+}
+
+.blog-entry {
+    text-align: justify;
+    width: 70%;
+    margin: 0 auto 50px;
+
+}
+
+.more-content span {
+    display: none;
+}
+header {
+    padding-left: 50px;
+    padding-top: 30px;
+}
+
+header img {
+    position: absolute;
+
+}
+
+footer {
+    margin: 20px;
+    align-items: center;
+}
+
+.red-number {
+    color: darkred;
+}

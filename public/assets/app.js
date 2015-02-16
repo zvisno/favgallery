@@ -2,7 +2,7 @@ $(document).ready(function() {
     $('div.images-container img').click(function() {
         var url = $(this).attr("src");
         $.get('/details', {url: url}, function( data ) {
-          $('div#detail' ).html( data );
+          $('p#detail' ).html( data );
 
           $('#delete_img').on('click', function(e) {
             var filename = url.split("brnzk")[1];

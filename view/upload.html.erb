@@ -1,0 +1,13 @@
+  <script src="assets/app.js"></script>
+  <div class="images-container">
+    <div>
+      <%= list_images %>
+      <% if @alarm == 1 %>
+          <p class="warning">You need to specify a file</p>
+      <% end %>
+      <form id="upload-form" action="/" method="post" enctype="multipart/form-data" >
+        <input type="file" name="file">
+        <input type="submit" value="Upload" class="btn btn-file">
+      </form>
+    </div>
+  </div>

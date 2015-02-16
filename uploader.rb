@@ -20,6 +20,9 @@ set :server, 'webrick'
 set :bucket, ENV['S3_BUCKET']
 set :s3_key, ENV['AWS_ACCESS_KEY_ID']
 set :s3_secret, ENV['AWS_SECRET_ACCESS_KEY']
+set :layout, "./view/layout.html.erb"
+set :upload, "./view/upload.html.erb"
+set :blog, "./view/blog.html.erb"
 
 def list_of_images(folder)
   check_dir_exists? PATH
@@ -33,7 +36,7 @@ def check_dir_exists? dir
 end
 
 def establish_s3_connection
-  AWS::S3::Base.establish_connection!(:access_key_id => settings.s3_key,
+  AWS::S3::Base.establish_connection!(:access_key_id     => settings.s3_key,
                                       :secret_access_key => settings.s3_secret)
 end
 
@@ -47,7 +50,12 @@ def list_images
     a << url
   end
   AWS::S3::Base.disconnect!
-  return a.map { |item|  "<div class='image-subcontainer'> <img src = '#{item}' alt = '#{item}'/> </div>" }.join
+  return a.map { |item|  "<div class='image-subcontainer'> <img class='img-illustration' src = '#{item}' alt = '#{item}'/> </div>" }.join
+end
+
+def my_render item
+  erb = ERB.new(File.read("./view/layout.html.erb"))
+  erb.result(binding)
 end
 
 get '/details' do
@@ -71,25 +79,31 @@ post '/delete' do
   AWS::S3::Base.disconnect!
 end
 
+get '/upload' do
+  @alarm = 0
+  my_render settings.upload
+end
+
+get '/blog' do
+  my_render settings.blog
+end
+
 get '/' do
-  alarm = 0
-  erb = ERB.new(File.read("./view/index.html.erb"))
-  erb.result(binding)
+  my_render settings.blog
 end
 
 post '/' do
   if !params[:file].nil?
     tmpfile = params[:file][:tempfile]
     filename = params[:file][:filename]
-
-    establish_s3_connection
-
-    AWS::S3::S3Object.store(filename, open(tmpfile), settings.bucket, :access => :public_read)
-    redirect back
-    AWS::S3::Base.disconnect!
+    if tmpfile.size < 2000000
+      establish_s3_connection
+      AWS::S3::S3Object.store(filename, open(tmpfile), settings.bucket, :access => :public_read)
+      AWS::S3::Base.disconnect!
+    end
   else
-    alarm = 1
-    erb = ERB.new(File.read("./view/index.html.erb"))
-    erb.result(binding)
+    @alarm = 1
+    my_render settings.upload
   end
+  redirect "/upload"
 end
