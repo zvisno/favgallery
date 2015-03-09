@@ -50,7 +50,8 @@ def list_images
     a << url
   end
   AWS::S3::Base.disconnect!
-  return a.map { |item|  "<div class='image-subcontainer'> <img class='img-illustration' src = '#{item}' alt = '#{item}'/> </div>" }.join
+  return a.map { |item|
+    "<div class='image-subcontainer'> <a href='#{item}' data-lightbox='#{item}' data-title='Zvisno(s) illustration'> <img  class='img-illustration' src = '#{item}'/> </a></div>" }.join
 end
 
 def my_render item
