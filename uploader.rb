@@ -23,6 +23,7 @@ set :s3_secret, ENV['AWS_SECRET_ACCESS_KEY']
 set :layout, "./view/layout.html.erb"
 set :upload, "./view/upload.html.erb"
 set :blog, "./view/blog.html.erb"
+set :resume, "./view/resume.html.erb"
 
 def list_of_images(folder)
   check_dir_exists? PATH
@@ -87,6 +88,10 @@ end
 
 get '/blog' do
   my_render settings.blog
+end
+
+get '/resume' do
+  my_render settings.resume
 end
 
 get '/' do
