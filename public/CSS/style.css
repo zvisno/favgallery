@@ -111,21 +111,27 @@ a {
   text-align: center;
 }
 
-#name {
-    opacity: 0.7;
-}
-
 #topContacts {
-    opacity: 0.5;
     font-size: 50%;
     display: block;
 }
 
+.transition {
+    transition-property: opacity;
+    transition-duration: 1s;
+    opacity: 0.1;
+}
+
+.transition:hover {
+    transition-property: opacity;
+    transition-duration: 1s;
+    opacity: 0.9;
+}
+
 #skills {
-    margin-left: 20%;
-    margin-right: 20%;
-    opacity: 0.3;
-    font-size: 50%;
+    margin-left: 15%;
+    margin-right: 15%;
+    font-size: 40%;
 }
 
 #skills li {

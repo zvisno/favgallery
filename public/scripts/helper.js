@@ -12,7 +12,7 @@ Cameron Pittman
 These are HTML strings. As part of the course, you'll be using JavaScript functions
 replace the %data% placeholder text you see in them.
 */
-var HTMLheaderName = '<h1 id="name">%data%</h1>';
+var HTMLheaderName = '<h1 id="name" class="transition">%data%</h1>';
 var HTMLheaderRole = '<span class="green-text">%data%</span><hr/>';
 
 var HTMLcontactGeneric = '<li class="flex-item"><span class="orange-text">%contact%</span><span class="green-text">%data%</span></li>';
@@ -25,7 +25,7 @@ var HTMLlocation = '<li class="flex-item"><span class="orange-text">location</sp
 
 var HTMLwelcomeMsg = '<span class="welcome-message">%data%</span>';
 
-var HTMLskillsStart = '<ul id="skills" class="flex-box"></ul>';
+var HTMLskillsStart = '<ul id="skills" class="flex-box transition"></ul>';
 var HTMLskills = '<li class="flex-item"><span class="green-text">%data%</span></li>';
 
 var HTMLworkStart = '<div class="work-entry"></div>';
