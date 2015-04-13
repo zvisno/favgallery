@@ -119,7 +119,7 @@ a {
 .transition {
     transition-property: opacity;
     transition-duration: 1s;
-    opacity: 0.1;
+    opacity: 0;
 }
 
 .transition:hover {
