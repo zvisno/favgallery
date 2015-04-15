@@ -1,5 +1,4 @@
 .my-h1 {
-    /*color: #52C8DB;*/
     font-size: 18px;
 }
 .my-a:link {
@@ -95,13 +94,37 @@ footer {
     color: darkred;
 }
 
+/*columns*/
+
+#columns ul {
+    list-style-type: none;
+}
+
+.post {
+    margin: 5px;
+}
+
+#column-1 {
+    width: 30%;
+    float: left;
+}
+
+#column-2 {
+    width: 30%;
+    float: left;
+}
+
+#column-3 {
+    width: 30%;
+    float: left;
+}
 
 
 /*upload*/
 
 .img-illustration {
     position: static;
-    height: 200px;
+    width: 200px;
 }
 
 #upload-form {

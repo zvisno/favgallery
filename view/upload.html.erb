@@ -3,8 +3,45 @@
   <script src="lightbox/js/jquery-1.11.0.min.js"></script>
   <script src="lightbox/js/lightbox.min.js"></script>
   <div class="images-container">
-    <div>
-      <%= list_images %>
+    <div id="columns">
+
+      <script>
+        $(document).ready(function(){
+            for (key in myArray) {
+                if (myArray.hasOwnProperty(key)) {
+
+                    var mod = $(".post").size() % 3;
+                    if (mod === 0) {
+                        var column = document.getElementById("column-1");
+                        $(column).append("<li class='post'> <a href='"+ myArray[key] + "'" + "data-lightbox=" + "'" + myArray[key] + "'" + "data-title='Zvisno(s) illustration'> <img  class='img-illustration' src = '"+ myArray[key] + "'/> </a></li>");
+                    }
+                    if (mod === 1){
+                        var column = document.getElementById("column-2");
+                        $(column).append("<li class='post'> <a href='"+ myArray[key] + "'" + "data-lightbox=" + "'" + myArray[key] + "'" + "data-title='Zvisno(s) illustration'> <img  class='img-illustration' src = '"+ myArray[key] + "'/> </a></li>");
+                    }
+
+                    if (mod === 2){
+                        var column = document.getElementById("column-3");
+                        $(column).append("<li class='post'> <a href='"+ myArray[key] + "'" + "data-lightbox=" + "'" + myArray[key] + "'" + "data-title='Zvisno(s) illustration'> <img  class='img-illustration' src = '"+ myArray[key] + "'/> </a></li>");
+                    }
+                }
+            }
+        });
+
+      </script>
+
+      <script> var myArray = <%= list_images %> </script>
+
+      <ul id="column-1">
+
+      </ul>
+
+      <ul id="column-2">
+      </ul>
+
+      <ul id="column-3">
+      </ul>
+
       <% if @alarm == 1 %>
           <p class="warning">You need to specify a file</p>
       <% end %>
@@ -12,5 +49,6 @@
         <input type="file" name="file">
         <input type="submit" value="Upload" class="btn btn-file">
       </form>
+
     </div>
   </div>

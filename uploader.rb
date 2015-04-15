@@ -42,6 +42,7 @@ def establish_s3_connection
 end
 
 def list_images
+
   a = []
 
   establish_s3_connection
@@ -50,9 +51,10 @@ def list_images
     url = AWS::S3::S3Object.url_for(o.key, settings.bucket, :authenticated => false)
     a << url
   end
+
   AWS::S3::Base.disconnect!
-  return a.map { |item|
-    "<div class='image-subcontainer'> <a href='#{item}' data-lightbox='#{item}' data-title='Zvisno(s) illustration'> <img  class='img-illustration' src = '#{item}'/> </a></div>" }.join
+
+  return a
 end
 
 def my_render item
