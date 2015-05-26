@@ -1,14 +1,14 @@
-require 'erb'
 require 'rubygems'
-require 'pry'
 require 'sinatra'
+require 'erb'
 require 'sinatra/reloader' if development?
 require 'sinatra/cookies'
+require 'aws/s3'
 require 'fileutils'
 require 'dir'
-require 'aws/s3'
 require 'open-uri'
 require 'net/http'
+require 'pry'
 
 configure :development do
   register Sinatra::Reloader
@@ -22,12 +22,27 @@ set :s3_key, ENV['AWS_ACCESS_KEY_ID']
 set :s3_secret, ENV['AWS_SECRET_ACCESS_KEY']
 set :layout, "./view/layout.html.erb"
 set :upload, "./view/upload.html.erb"
-set :blog, "./view/blog.html.erb"
+set :start, "./view/start.html.erb"
 set :resume, "./view/resume.html.erb"
 
 def list_of_images(folder)
   check_dir_exists? PATH
   return Dir.entries(folder)
+end
+
+def list_images_from_bucket
+  a = []
+  establish_s3_connection
+
+  bucket = AWS::S3::Bucket.find(settings.bucket)
+  bucket.objects.each do |o|
+    url = AWS::S3::S3Object.url_for(o.key, settings.bucket, :authenticated => false)
+    a << url
+  end
+
+  aws_s3_disconnect
+
+  return a
 end
 
 def check_dir_exists? dir
@@ -41,25 +56,23 @@ def establish_s3_connection
                                       :secret_access_key => settings.s3_secret)
 end
 
-def list_images
-
-  a = []
-
-  establish_s3_connection
-  bucket = AWS::S3::Bucket.find(settings.bucket)
-  bucket.objects.each do |o|
-    url = AWS::S3::S3Object.url_for(o.key, settings.bucket, :authenticated => false)
-    a << url
-  end
-
+def aws_s3_disconnect
   AWS::S3::Base.disconnect!
-
-  return a
 end
 
-def my_render item
+def custom_render item
   erb = ERB.new(File.read("./view/layout.html.erb"))
   erb.result(binding)
+end
+
+#routes
+
+get '/' do
+  custom_render settings.start
+end
+
+get '/start' do
+  custom_render settings.start
 end
 
 get '/details' do
@@ -75,29 +88,13 @@ get '/details' do
   erb.result(binding)
 end
 
-post '/delete' do
-  establish_s3_connection
-  filename = params[:filename]
-  AWS::S3::S3Object.delete filename, settings.bucket
-  redirect back
-  AWS::S3::Base.disconnect!
-end
-
 get '/upload' do
   @alarm = 0
-  my_render settings.upload
-end
-
-get '/blog' do
-  my_render settings.blog
+  custom_render settings.upload
 end
 
 get '/resume' do
-  my_render settings.resume
-end
-
-get '/' do
-  my_render settings.blog
+  custom_render settings.resume
 end
 
 post '/' do
@@ -107,11 +104,19 @@ post '/' do
     if tmpfile.size < 2000000
       establish_s3_connection
       AWS::S3::S3Object.store(filename, open(tmpfile), settings.bucket, :access => :public_read)
-      AWS::S3::Base.disconnect!
+      aws_s3_disconnect
     end
   else
     @alarm = 1
     my_render settings.upload
   end
   redirect "/upload"
+end
+
+post '/delete' do
+  establish_s3_connection
+  filename = params[:filename]
+  AWS::S3::S3Object.delete filename, settings.bucket
+  redirect back
+  aws_s3_disconnect
 end

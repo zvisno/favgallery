@@ -1,3 +1,7 @@
+body {
+    height: 100%;
+}
+
 .my-h1 {
     font-size: 18px;
 }
@@ -23,7 +27,6 @@
     display: inline-block;
     position: relative;
     width: 15%;
-    padding-left: 50px;
     vertical-align: top;
 }
 
@@ -75,19 +78,21 @@
 .more-content span {
     display: none;
 }
-header {
-    padding-left: 50px;
-    padding-top: 30px;
-}
 
 header img {
-    position: absolute;
+    position: relative;
+    display: inline-block;
+}
 
+header p {
+    position: relative;
+    display: inline-block;
 }
 
 footer {
     margin: 20px;
     align-items: center;
+    bottom: 0;
 }
 
 .red-number {
@@ -105,17 +110,14 @@ footer {
 }
 
 #column-1 {
-    width: 30%;
     float: left;
 }
 
 #column-2 {
-    width: 30%;
     float: left;
 }
 
 #column-3 {
-    width: 30%;
     float: left;
 }
 
