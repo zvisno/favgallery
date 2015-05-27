@@ -19,4 +19,13 @@ $(document).ready(function() {
     $(this).click(function(e) {
       $('div#detail').empty()
     });
+
+    $(document).click(function(e){
+        var posX = e.clientX - 12.5,
+          posY = e.clientY - 12.5;
+        document.getElementById('image').style.top = posY + "px";
+        document.getElementById('image').style.left = posX + "px";
+
+        $("img#image").hide().fadeIn(1000);
+    });
 });

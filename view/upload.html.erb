@@ -1,5 +1,4 @@
   <link href="lightbox/css/lightbox.css" rel="stylesheet" />
-  <script src="scripts/app.js"></script>
   <script src="lightbox/js/jquery-1.11.0.min.js"></script>
   <script src="lightbox/js/lightbox.min.js"></script>
   <div class="images-container">
@@ -10,18 +9,13 @@
             for (key in myArray) {
                 if (myArray.hasOwnProperty(key)) {
 
-                    var mod = $(".post").size() % 3;
+                    var mod = $(".post").size() % 2;
                     if (mod === 0) {
                         var column = document.getElementById("column-1");
                         $(column).append("<li class='post'> <a href='"+ myArray[key] + "'" + "data-lightbox=" + "'" + myArray[key] + "'" + "data-title='Zvisno(s) illustration'> <img  class='img-illustration' src = '"+ myArray[key] + "'/> </a></li>");
                     }
                     if (mod === 1){
                         var column = document.getElementById("column-2");
-                        $(column).append("<li class='post'> <a href='"+ myArray[key] + "'" + "data-lightbox=" + "'" + myArray[key] + "'" + "data-title='Zvisno(s) illustration'> <img  class='img-illustration' src = '"+ myArray[key] + "'/> </a></li>");
-                    }
-
-                    if (mod === 2){
-                        var column = document.getElementById("column-3");
                         $(column).append("<li class='post'> <a href='"+ myArray[key] + "'" + "data-lightbox=" + "'" + myArray[key] + "'" + "data-title='Zvisno(s) illustration'> <img  class='img-illustration' src = '"+ myArray[key] + "'/> </a></li>");
                     }
                 }
