@@ -1,19 +1,11 @@
 html, body {
+    font-family: 'Lato' !important;
     margin: 0;
     height: 100%;
 }
 
 .my-h1 {
     font-size: 18px;
-}
-.my-a:link {
-    text-decoration: none;
-    color: #0D0000;
-}
-
-.my-a:visited {
-    text-decoration: none;
-    color: #0D0000;
 }
 
 #container {
@@ -48,21 +40,6 @@ html, body {
     display: none;
 }
 
-header img {
-    position: relative;
-    display: inline-block;
-}
-
-header ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-header ul li {
-    display: inline-block;
-}
-
 footer {
     margin: 20px;
     align-items: center;
@@ -77,15 +54,49 @@ footer div {
 
 /*header*/
 
-div#icon img {
-    width: 60px;
-    height: 60px;
+header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+header ul li {
+    margin: 0 20px 0 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+div#icon a img {
+    width: 50px;
+    height: 50px;
+}
+
+.my-a:link {
+    line-height: 50px;
+    position: relative;
+    text-decoration: none;
+    color: #0D0000;
+    vertical-align: middle;
+}
+
+.my-a:visited {
+    text-decoration: none;
+    color: #0D0000;
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    background: red;
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    border-radius: 50px;
+    text-align: center;
 }
 
 /*blog entry*/
 #blog-container {
-    margin: 100px auto;
-    width: 50%;
+    margin: 150px auto;
 }
 
 .blog-entry {
@@ -93,17 +104,14 @@ div#icon img {
 }
 
 #main-photo {
-    width: 200px;
-    height: 300px;
-    display: inline-block;
     top: 100px;
+    width: 300px;
+    display: inline-block;
 }
 
 #main-text {
-    margin: 0;
-    display: inline-block;
+    padding-top: 10px;
     width: 300px;
-    height: 300px;
 }
 
 /*illustration columns*/
@@ -126,17 +134,6 @@ div#icon img {
 
 #column-3 {
     float: left;
-}
-/*menu*/
-
-.circle {
-    width: 50px;
-    height: 50px;
-    background: red;
-    -moz-border-radius: 50px;
-    -webkit-border-radius: 50px;
-    border-radius: 50px;
-    text-align: center;
 }
 
 /*upload*/
